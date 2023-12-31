@@ -1,0 +1,99 @@
+1. Install Django using a virtual environment
+	pip install virtualenv
+2. Create virtual environment
+	virtualenv env
+3. Activate the environment (*Make sure you remember to turn on the environment)
+	env\scripts\activate
+4. Install Django
+	pip install django
+	django-admin startproject studybuddy (to create the project folder
+5. Look at commands: runserver, migrate, makemigrations, startproject
+6. Go into the studybuddy folder, start the development server
+	python manage.py runserver
+7. Cop, paste the server location. Should say that Django install worked successfully.
+
+
+*python manage.py startapp (base) -> creates a base folder (app) for our project
+	- django doesn't recognize it yet
+
+different py files: apps to manage functions, models for templates, views for display, etc. (in the new folder)
+
+add the new folder directory (in the apps.py file) to the Installed_Apps for the setting so Django recognizes the folder
+
+***url.py triggers views and casts on the webpage
+
+To separate different functions, create urls.py and use with views.py in the new app. Link the new directory to the project folder -> urls.py. 
+	-from django.http import HttpResponse in views.py
+	-In urls.py: from . import views
+	-urlpatterns in urls.py, functions defined in views.py.
+
+urlpatterns in studybuddy: path('', include('base.urls')) to link base folder's urls.py
+
+Using templates: create a new 'templates' folder, link folder through TEMPLATES -> DIRS (directories) in the settings.py file
+
+Use render(request, #htmlfile) as the return object from views.py
+
+Templates: circle {% block content %}, using main.html file to execute the separate functions.
+
+Django: {{ }} to encirculate variables. Some tags will need beginning and end; {%if ___%} -> {%endif%}. Used for dynamic data.
+
+Through views.py, pass the new dict rooms into the home as a parameter
+
+You can create lists/functions and pass to the templates to be displayed on the main.html file.
+
+2nd method: create templates folder with base folder in it (same name as your application)
+
+Dynamic URL routing: <str:pk>, urls.py path. Allow you to pass in a dynamic value (string) at the end of the url.
+
+Implement 
+
+Databases: creates a python class, attributes of the class represents the columns of the database; the rows are the instances of the class.
+
+Attribute of class: specify the type of value (e.g. textfield -> .CharField(max_length=200)
+
+Implement migrations; activate django default systems -> create super user (python manage.py createsuperuser) -> login to admin, interface provided by django.
+
+Register Room with the admin panel:
+from .models import Room
+
+admin.site.register(Room)
+
+querying all the attributes with a single variable
+Models.py automatically generates an id from 1 ->, this can be overridden.
+
+One to many relationships: 1 model that has many children -> inheritance, identified by ids
+	room = models.ForeignKey(Room, on_delete=models.CASCADE)
+
+CRUD operations: (Create, Read, Update, Delete)
+Use {% csrf_token %} token to block malicious attacks
+
+New url: create-room to employ user-based functions
+implementing functionalities through view.py, models.py, home.html
+
+Implement user logins; import User, Login, Logout from django, writing functions to restrict pages determined by user's current status (logout erases user's current sessionid -> redirect to login page)
+
+Adding functions -> separating authenticated users, redirecting un-authenticated ones to login, removing edit/delete button for unmatching users, etc.
+
+Adding registration functions, messages and time functionalities, adding inside the room function and assigning properties of current request to the messages
+
+{% for message in room_messages%} 
+        <div>
+            <small>@{{message.user}}   {{message.created|timesince}}</small>
+            <p>{{message.body}}</p>
+            <hr>
+        
+        </div>
+    {% endfor %}
+
+Adding participants: python manage.py make migrations, python manage.py migrate to employ the ManyToManyField -> manage in admin panel
+
+Currently at 3:34:57
+
+
+
+
+
+
+
+
+
