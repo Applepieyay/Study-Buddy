@@ -1,4 +1,6 @@
-## Study Buddy: Online Chat & Learning Platform
+## Study Buddy
+
+##**A discord-like, online learning/chat platform**
 
 ### Description
 
@@ -14,4 +16,8 @@ Supports all basic CRUD functions and live-conversations (server currently not l
 
 Features such as activity feeds, custom user profiles, filters and one-to-many servers/rooms.
 
-Still in progress
+Design/server hosting still in progress
+
+
+
+
