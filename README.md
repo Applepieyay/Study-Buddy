@@ -18,6 +18,8 @@ Features such as activity feeds, custom user profiles, filters and one-to-many s
 
 Design/server hosting still in progress
 
+**Requires Virtual Python Environment with Django installed**
+
 
 
 
