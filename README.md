@@ -6,7 +6,7 @@
 
 Backend written using Python & Django, based upon build-in Django functions. Uses SQLite databases for data manipulation.
 
-Frontend written using TailwindCSS framework, vanilla HTML and JS.
+Frontend using HTML, CSS, JS
 
 ### Functions
 
